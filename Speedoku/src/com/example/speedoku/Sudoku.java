@@ -1,12 +1,4 @@
-/***
- * Excerpted from "Hello, Android!",
- * published by The Pragmatic Bookshelf.
- * Copyrights apply to this code. It may not be used to create training material, 
- * courses, books, articles, and the like. Contact us if you are in doubt.
- * We make no guarantees that this code is fit for any purpose. 
- * Visit http://www.pragmaticprogrammer.com/titles/eband for more book information.
-***/
-package org.example.sudoku;
+package com.example.speedoku;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -39,21 +31,6 @@ public class Sudoku extends Activity implements OnClickListener {
       View exitButton = findViewById(R.id.exit_button);
       exitButton.setOnClickListener(this);
    }
-
-   
-   @Override
-   protected void onResume() {
-      super.onResume();
-      Music.play(this, R.raw.main);
-   }
-
-   @Override
-   protected void onPause() {
-      super.onPause();
-      Music.stop(this);
-   }
-   
-
    
    public void onClick(View v) {
       switch (v.getId()) {

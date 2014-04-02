@@ -6,7 +6,7 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/eband for more book information.
 ***/
-package org.example.sudoku;
+package com.example.speedoku;
 
 import android.app.Activity;
 import android.os.Bundle;
