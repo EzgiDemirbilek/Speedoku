@@ -8,7 +8,7 @@
  ! Visit http://www.pragmaticprogrammer.com/titles/eband for more book information.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="org.example.sudoku"
+      package="com.example.speedoku"
       android:versionCode="1"
       android:versionName="1.0">
     <application android:icon="@drawable/icon"

@@ -8,6 +8,8 @@
 ***/
 package com.example.speedoku;
 
+import com.example.speedoku.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 

@@ -1,5 +1,6 @@
 package com.example.speedoku;
 
+import com.example.speedoku.R;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;

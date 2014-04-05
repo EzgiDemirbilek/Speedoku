@@ -1,5 +1,6 @@
 package com.example.speedoku;
 
+import com.example.speedoku.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;

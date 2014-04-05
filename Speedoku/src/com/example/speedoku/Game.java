@@ -1,6 +1,8 @@
 package com.example.speedoku;
 
 import android.app.Activity;
+
+import com.example.speedoku.R;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;

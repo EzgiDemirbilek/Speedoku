@@ -1,6 +1,6 @@
 package com.example.speedoku;
 
-
+import com.example.speedoku.R;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
