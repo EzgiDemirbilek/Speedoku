@@ -10,12 +10,12 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 public class Game extends Activity {
-   private static final String TAG = "Sudoku";
+   private static final String TAG = "Speedoku";
 
    public static final String KEY_DIFFICULTY =
       "com.example.speedoku.difficulty";
    
-   private static final String PREF_PUZZLE = "puzzle" ;
+   private static final String PUZZLE = "puzzle" ;
    
    public static final int DIFFICULTY_EASY = 0;
    public static final int DIFFICULTY_MEDIUM = 1;
@@ -59,7 +59,7 @@ public class Game extends Activity {
 
       
       // ...
-      // If the activity is restarted, do a continue next time
+      //Wenn App neu startet wird es nächstes mal weiterlaufen
       getIntent().putExtra(KEY_DIFFICULTY, DIFFICULTY_CONTINUE);
    }
    
@@ -68,19 +68,19 @@ public class Game extends Activity {
       super.onPause();
       Log.d(TAG, "onPause");
 
-      // Save the current puzzle
-      getPreferences(MODE_PRIVATE).edit().putString(PREF_PUZZLE,
+      // Puzzle speichern
+      getPreferences(MODE_PRIVATE).edit().putString(PUZZLE,
             toPuzzleString(puzzle)).commit();
    }
    
    
    
-   /** Given a difficulty level, come up with a new puzzle */
+   /** Schwierigkeit bestimmen */
    private int[] getPuzzle(int diff) {
       String puz;
       switch (diff) {
       case DIFFICULTY_CONTINUE:
-         puz = getPreferences(MODE_PRIVATE).getString(PREF_PUZZLE,
+         puz = getPreferences(MODE_PRIVATE).getString(PUZZLE,
                easyPuzzle);
          break;
          // ...
@@ -101,7 +101,7 @@ public class Game extends Activity {
    }
    
 
-   /** Convert an array into a puzzle string */
+   /** Array auf String ändern */
    static private String toPuzzleString(int[] puz) {
       StringBuilder buf = new StringBuilder();
       for (int element : puz) {
@@ -110,7 +110,7 @@ public class Game extends Activity {
       return buf.toString();
    }
 
-   /** Convert a puzzle string into an array */
+   /** String in eine Array ändern */
    static protected int[] fromPuzzleString(String string) {
       int[] puz = new int[string.length()];
       for (int i = 0; i < puz.length; i++) {
@@ -119,14 +119,14 @@ public class Game extends Activity {
       return puz;
    }
 
-   /** Return the tile at the given coordinates */
+   /** Kacheln zurückgeben*/
    private int getTile(int x, int y) {
       return puzzle[y * 9 + x];
    }
 
-   /** Change the tile at the given coordinates */
-   private void setTile(int x, int y, int value) {
-      puzzle[y * 9 + x] = value;
+   /** Kacheln ändern */
+   private void setTile(int x, int y, int wert) {
+      puzzle[y * 9 + x] = wert;
    }
 
    /** Return a string for the tile at the given coordinates */
@@ -139,20 +139,20 @@ public class Game extends Activity {
    }
 
    /** Change the tile only if it's a valid move */
-   protected boolean setTileIfValid(int x, int y, int value) {
+   protected boolean setTileIfValid(int x, int y, int wert) {
       int tiles[] = getUsedTiles(x, y);
-      if (value != 0) {
+      if (wert != 0) {
          for (int tile : tiles) {
-            if (tile == value)
+            if (tile == wert)
                return false;
          }
       }
-      setTile(x, y, value);
+      setTile(x, y, wert);
       calculateUsedTiles();
       return true;
    }
 
-   /** Open the keypad if there are any valid moves */
+   /** Ziffer Pad aufrufen bei einem validen Feld */
    protected void showKeypadOrError(int x, int y) {
       int tiles[] = getUsedTiles(x, y);
       if (tiles.length == 9) {

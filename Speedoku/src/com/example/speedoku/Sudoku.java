@@ -14,20 +14,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 public class Sudoku extends Activity implements OnClickListener {
-   private static final String TAG = "Sudoku";
+   private static final String TAG = "Speedoku";
    
-   /** Called when the activity is first created. */
+   // Main Methode von Android
    @Override
    public void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.main);
-      // Set up click listeners for all the buttons
-      View continueButton = findViewById(R.id.continue_button);
-      continueButton.setOnClickListener(this);
-      View newButton = findViewById(R.id.new_button);
-      newButton.setOnClickListener(this);
-      View aboutButton = findViewById(R.id.about_button);
-      aboutButton.setOnClickListener(this);
+      // Alle Buttons werden hinzugefügt
+      View weiterButton = findViewById(R.id.continue_button);
+      weiterButton.setOnClickListener(this);
+      View neuButton = findViewById(R.id.new_button);
+      neuButton.setOnClickListener(this);
+      View ueberUnsButton = findViewById(R.id.about_button);
+      ueberUnsButton.setOnClickListener(this);
       View exitButton = findViewById(R.id.exit_button);
       exitButton.setOnClickListener(this);
    }
@@ -35,17 +35,17 @@ public class Sudoku extends Activity implements OnClickListener {
    public void onClick(View v) {
       switch (v.getId()) {
       case R.id.continue_button:
-         startGame(Game.DIFFICULTY_CONTINUE);
+         startSpiel(Game.DIFFICULTY_CONTINUE);
          break;
-         // ...
+         
          
       case R.id.about_button:
          Intent i = new Intent(this, About.class);
          startActivity(i);
          break;
-      // More buttons go here (if any) ...
+     
       case R.id.new_button:
-         openNewGameDialog();
+         neuesSpielDialog();
          break;
       case R.id.exit_button:
          finish();
@@ -69,27 +69,27 @@ public class Sudoku extends Activity implements OnClickListener {
       case R.id.settings:
          startActivity(new Intent(this, Prefs.class));
          return true;
-      // More items go here (if any) ...
+      
       }
       return false;
    }
 
-   /** Ask the user what difficulty level they want */
-   private void openNewGameDialog() {
+   //Schwierigkeitsgrad auswählen
+   private void neuesSpielDialog() {
       new AlertDialog.Builder(this)
            .setTitle(R.string.new_game_title)
            .setItems(R.array.difficulty,
             new DialogInterface.OnClickListener() {
                public void onClick(DialogInterface dialoginterface,
                      int i) {
-                  startGame(i);
+                  startSpiel(i);
                }
             })
            .show();
    }
 
-   /** Start a new game with the given difficulty level */
-   private void startGame(int i) {
+   //neues Spiel starten, nachdem man eine Schwierigkeit
+   private void startSpiel(int i) {
       Log.d(TAG, "clicked on " + i);
       Intent intent = new Intent(Sudoku.this, Game.class);
       intent.putExtra(Game.KEY_DIFFICULTY, i);
