@@ -70,8 +70,9 @@ public class PuzzleView extends View {
 
    @Override
    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-      width = w / 9f;
-      height = h / 9f;
+	   //TODO 9f
+      width = w / 12f;
+      height = h / 12f;
       getRect(selX, selY, selRect);
       Log.d(TAG, "onSizeChanged: width " + width + ", height "
             + height);
@@ -80,7 +81,7 @@ public class PuzzleView extends View {
 
    @Override
    protected void onDraw(Canvas canvas) {
-      // Draw the background...
+      // Hintergrund erstellen
       Paint background = new Paint();
       background.setColor(getResources().getColor(
             R.color.puzzle_background));
@@ -99,8 +100,8 @@ public class PuzzleView extends View {
       Paint light = new Paint();
       light.setColor(getResources().getColor(R.color.puzzle_light));
 
-      // Draw the minor grid lines
-      for (int i = 0; i < 9; i++) {
+      //TODO Draw the minor grid lines 9
+      for (int i = 0; i < 12; i++) {
          canvas.drawLine(0, i * height, getWidth(), i * height,
                light);
          canvas.drawLine(0, i * height + 1, getWidth(), i * height
@@ -112,7 +113,7 @@ public class PuzzleView extends View {
       }
 
       // Draw the major grid lines
-      for (int i = 0; i < 9; i++) {
+      for (int i = 0; i < 12; i++) {
          if (i % 3 != 0)
             continue;
          canvas.drawLine(0, i * height, getWidth(), i * height,
@@ -130,7 +131,8 @@ public class PuzzleView extends View {
       foreground.setColor(getResources().getColor(
             R.color.puzzle_foreground));
       foreground.setStyle(Style.FILL);
-      foreground.setTextSize(height * 0.75f);
+      //TODO 0.75f Zahlgröße
+      foreground.setTextSize(height * 0.4f);
       foreground.setTextScaleX(width / height);
       foreground.setTextAlign(Paint.Align.CENTER);
 

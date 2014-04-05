@@ -21,7 +21,6 @@ public class Sudoku extends Activity implements OnClickListener {
    public void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.main);
-
       // Set up click listeners for all the buttons
       View continueButton = findViewById(R.id.continue_button);
       continueButton.setOnClickListener(this);

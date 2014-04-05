@@ -13,7 +13,7 @@ public class Game extends Activity {
    private static final String TAG = "Sudoku";
 
    public static final String KEY_DIFFICULTY =
-      "org.example.sudoku.difficulty";
+      "com.example.speedoku.difficulty";
    
    private static final String PREF_PUZZLE = "puzzle" ;
    
